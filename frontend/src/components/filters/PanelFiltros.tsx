@@ -32,6 +32,9 @@ import type {
 } from '@/types/ui';
 import { useFiltrosAcopio } from '@/hooks/useFiltrosAcopio';
 import { useFiltrosRiesgo } from '@/hooks/useFiltrosRiesgo';
+import { useEsMobile } from '@/hooks/useEsMobile';
+import { useBottomSheet } from '@/hooks/useBottomSheet';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { Badge, Boton, tonoDesdeEstado, tonoDesdeSeveridad } from '@/components/ui';
 import {
   etiquetaEstadoOperativo,
@@ -121,15 +124,32 @@ export function PanelFiltros({
   // escritorio (md+) los filtros están siempre visibles (clase `md:block`).
   const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
 
+  // Hoja inferior deslizable: SOLO en móvil. El asidero (grabber) permite
+  // arrastrar el panel entre posiciones (min / medio / expandido) con el dedo.
+  const esMobile = useEsMobile();
+  const reducido = usePrefersReducedMotion();
+  const sheet = useBottomSheet(esMobile, 'medio');
+
   const total = modo === 'acopio' ? resultadoAcopio.total : resultadoRiesgo.total;
 
   const clasesPanel = [
-    'flex max-h-full min-h-0 flex-col overflow-hidden rounded-2xl',
+    'flex min-h-0 flex-col overflow-hidden rounded-2xl',
     'border border-surface-border bg-surface/95 shadow-float backdrop-blur-sm',
+    // En escritorio la altura la limita el contenedor; en móvil la controla el
+    // bottom sheet vía `style`.
+    esMobile ? '' : 'max-h-full',
+    // Transición suave de altura al soltar el arrastre (respeta reduced-motion).
+    !sheet.arrastrando && !reducido ? 'transition-[height] duration-200 ease-out' : '',
     className ?? '',
   ]
     .filter(Boolean)
     .join(' ');
+
+  // Altura dinámica del panel en móvil (bottom sheet). En escritorio, `null`.
+  const stylePanel =
+    esMobile && sheet.alturaPx != null
+      ? { height: `${sheet.alturaPx}px` }
+      : undefined;
 
   // Clases de la sección de filtros: oculta en móvil cuando está colapsada,
   // siempre visible desde `md`.
@@ -147,9 +167,24 @@ export function PanelFiltros({
           : 'Filtros y resultados de puntos de riesgo'
       }
       className={clasesPanel}
+      style={stylePanel}
     >
-      {/* Asidero visual: señala que el panel es deslizable en móvil. */}
-      <div className="flex shrink-0 justify-center pt-2 md:hidden">
+      {/* Asidero (grabber) arrastrable en móvil: permite deslizar el panel entre
+          posiciones (min / medio / expandido). Tocarlo alterna minimizado/medio.
+          `touch-none` evita que el gesto haga scroll de la página al arrastrar. */}
+      <div
+        className="flex shrink-0 cursor-grab touch-none select-none justify-center py-2.5 active:cursor-grabbing md:hidden"
+        onPointerDown={sheet.onPointerDown}
+        role="button"
+        tabIndex={0}
+        aria-label="Arrastra para ajustar el alto del panel; toca para minimizar o expandir"
+        onKeyDown={(evento) => {
+          if (evento.key === 'Enter' || evento.key === ' ') {
+            evento.preventDefault();
+            sheet.alternar();
+          }
+        }}
+      >
         <span className="grabber" aria-hidden="true" />
       </div>
 

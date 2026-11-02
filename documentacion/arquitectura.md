@@ -73,7 +73,7 @@ frontend/
 | `components/administration/` | Panel de administración con tabla y formularios (`FormAcopio`, `FormRiesgo`). |
 | `components/summary/` · `onboarding/` · `ui/` | Panel de resumen, recorrido de onboarding y componentes reutilizables accesibles. |
 | `data/mock/*` | Datos ficticios por entidad, relacionados por ID; barrel en `index.ts`. |
-| `hooks/` | Filtrado reutilizable (`aplicarFiltros`, `useFiltrosAcopio/Riesgo`), geolocalización, toasts, `prefers-reduced-motion`, detección móvil (`useEsMobile`) y bloqueo de scroll de fondo con overlays abiertos (`useBloqueoScroll`). |
+| `hooks/` | Filtrado reutilizable (`aplicarFiltros`, `useFiltrosAcopio/Riesgo`), geolocalización, toasts, `prefers-reduced-motion`, detección móvil (`useEsMobile`), bloqueo de scroll de fondo con overlays abiertos (`useBloqueoScroll`) y hoja inferior arrastrable del panel de filtros en móvil (`useBottomSheet`). |
 | `services/` | `DataService` (interfaz), `MockDataService`, `ApiDataService` (con fallback a mock), fábrica `crearDataService()` y `storage.ts` (localStorage tipado). |
 | `types/` | `domain.ts` (entidades + enums) y `ui.ts` (view-models y modelos de filtrado). |
 | `utils/` | Etiquetas/formato, utilidades geográficas, derivación de view-models, estadísticas y helpers de riesgo. |

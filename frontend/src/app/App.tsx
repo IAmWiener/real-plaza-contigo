@@ -367,7 +367,7 @@ export function App() {
             >
               <div
                 className={[
-                  'pointer-events-auto absolute inset-x-2 bottom-2 max-h-[45vh] pb-[env(safe-area-inset-bottom)]',
+                  'pointer-events-auto absolute inset-x-2 bottom-2 pb-[env(safe-area-inset-bottom)]',
                   'md:inset-x-auto md:bottom-auto md:left-3 md:top-3 md:max-h-[calc(100%-1.5rem)] md:w-96 md:pb-0',
                   // Oculto en móvil durante el reporte; siempre visible en md+.
                   esMobile && modo === 'riesgo' && reporteActivo
@@ -389,7 +389,7 @@ export function App() {
                   onLimpiar={limpiarFiltros}
                   onSeleccionar={(id) => seleccionar(id, modo)}
                   seleccionId={seleccionId}
-                  className="max-h-full"
+                  className="md:max-h-full"
                 />
               </div>
 

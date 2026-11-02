@@ -78,7 +78,8 @@
 | Foco visible, etiquetas accesibles, teclado | ✅ | Componentes `ui/*` + `index.css`. |
 | Estados por texto + icono (no solo color) | ✅ | `Badge`, severidad/estado operativo. |
 | `prefers-reduced-motion` | ✅ | `usePrefersReducedMotion` + `index.css`. |
-| Responsive móvil (drawer/bottom sheet, safe-area) | ✅ | Capas con z-index coherente (mapa `z-0`, overlays `z-[600]`, drawer `z-[2000]`); panel de filtros con `max-h` + safe-area y flujo de reporte con scroll. |
+| Responsive móvil (drawer/bottom sheet, safe-area) | ✅ | Capas con z-index coherente (mapa `z-0`, overlays `z-[600]`, drawer `z-[2000]`); safe-area y flujo de reporte con scroll. |
+| Panel de filtros deslizable en móvil | ✅ | Hoja inferior arrastrable por el asidero (`useBottomSheet`) con posiciones min/medio/expandido; en escritorio es panel lateral. Permite ocultar el panel y ver los resultados con scroll. |
 | Robustez de scroll | ✅ | `html/body` con `overflow: hidden` + `overscroll-behavior: none` (sin scroll fantasma en móvil); `overscroll-contain` en los contenedores deslizables sobre el mapa (listas, fichas, reporte, resumen, administración); bloqueo del scroll de fondo con overlays abiertos (`useBloqueoScroll` en `Drawer`, `Dialogo` y `Tour`). |
 
 ## Despliegue
