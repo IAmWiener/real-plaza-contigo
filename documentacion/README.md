@@ -1,7 +1,8 @@
 # Documentación — Mapa de Solidaridad Real
 
 > **Estado:** el **frontend** está implementado y **desplegado** (S3 +
-> CloudFront, HTTPS). El **backend** está pendiente.
+> CloudFront, HTTPS). El **backend** (API REST + Prisma + PostgreSQL/PostGIS)
+> está implementado y compila; su despliegue en AWS queda pendiente.
 >
 > **App pública (demo):** https://d1uo79vfdlb23z.cloudfront.net/
 >
@@ -21,8 +22,10 @@ Real Plaza. Permite:
 La plataforma se compone de dos proyectos en un monorepo:
 
 - `frontend/` — aplicación web React + TypeScript + Vite (implementada y desplegada).
-- `backend/` — API REST Node.js + TypeScript con PostgreSQL + PostGIS, desplegable
-  en AWS como Lambda + API Gateway (en construcción).
+- `backend/` — API REST Node.js + TypeScript (Express + Prisma) con PostgreSQL +
+  PostGIS; corre en local como servidor Express y se adapta a AWS Lambda + API
+  Gateway mediante `@codegenie/serverless-express` (implementado; despliegue AWS
+  pendiente).
 
 ## ⚠️ Aviso sobre los datos
 
@@ -35,20 +38,24 @@ reales de Real Plaza.
 
 | Documento | Contenido | Estado |
 |-----------|-----------|--------|
-| [`arquitectura.md`](./arquitectura.md) | Estructura de carpetas y módulos | En progreso |
-| [`stack-tecnologico.md`](./stack-tecnologico.md) | Tecnologías y dependencias con versiones | En progreso (frontend) |
-| [`modelo-de-datos.md`](./modelo-de-datos.md) | Entidades, tipos y relaciones por ID | En progreso |
-| [`funcionalidades.md`](./funcionalidades.md) | Vistas y features implementadas | En progreso |
-| [`guia-ejecucion.md`](./guia-ejecucion.md) | Comandos de instalación, desarrollo y build | En progreso |
+| [`arquitectura.md`](./arquitectura.md) | Estructura de carpetas y módulos (frontend + backend) | Actualizado |
+| [`stack-tecnologico.md`](./stack-tecnologico.md) | Tecnologías y dependencias con versiones | Actualizado |
+| [`modelo-de-datos.md`](./modelo-de-datos.md) | Entidades, tipos y relaciones por ID | Actualizado |
+| [`funcionalidades.md`](./funcionalidades.md) | Vistas y features implementadas | Actualizado |
+| [`guia-ejecucion.md`](./guia-ejecucion.md) | Comandos de instalación, desarrollo y build | Actualizado |
 | [`sistema-de-diseno.md`](./sistema-de-diseno.md) | Tokens de marca (Comunidad Real), tipografía y componentes | Aplicado |
 
 ## Estado actual
 
-- **Monorepo** inicializado (`package.json` con workspaces `frontend` y
+- **Monorepo** con npm workspaces (`package.json` raíz con `frontend` y
   `backend`).
-- **Frontend:** configuración completa (Vite, TS, Tailwind), tipos del dominio,
-  datos mockeados, utilidades y acceso a localStorage. Pendientes: componentes
-  (mapa, filtros, fichas, riesgo, administración), capa de servicios API y
-  hooks.
-- **Backend:** pendiente de inicialización (Node + TS + Express, PostGIS, AWS
-  Lambda).
+- **Frontend:** completo. Mapa interactivo, selector de modo Acopio/Riesgo,
+  filtros y búsqueda, fichas de detalle, flujo de reporte de riesgo, panel de
+  administración, capa de servicios (API con respaldo a mocks + localStorage) y
+  hooks. Compila sin errores (typecheck/lint/build limpios) y está desplegado.
+- **Backend:** implementado. API REST con Express + Prisma sobre PostgreSQL +
+  PostGIS; módulos para empresas, categorías, eventos, recursos, puntos de
+  acopio y puntos de riesgo (CRUD + consulta geoespacial por radio). Compila sin
+  errores (typecheck/lint/build limpios). Requiere una base PostgreSQL con
+  PostGIS para ejecutarse; el **despliegue en AWS** (Lambda + API Gateway + RDS)
+  queda pendiente.

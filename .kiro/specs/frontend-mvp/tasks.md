@@ -349,7 +349,7 @@ etiquetada con el formato `// Feature: frontend-mvp, Property {n}: {texto}`.
     - _Requirements: 1.3, 1.4, 13.1, 13.2, 13.4, 14.1, 14.4, 15.1, 15.2, 15.3_
 
 - [x] 16. Verificación final — build, typecheck y lint limpios
-  - [ ] 16.1 Ejecutar `npm run typecheck`, `npm run lint`, `npm test` y `npm run build`
+  - [x] 16.1 Ejecutar `npm run typecheck`, `npm run lint`, `npm test` y `npm run build`
     - Corregir todos los errores de tipado, lint, pruebas y compilación hasta que
       las cuatro comprobaciones pasen sin errores ni warnings críticos
     - _Requirements: 12.1_

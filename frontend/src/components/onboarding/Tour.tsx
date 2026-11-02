@@ -26,6 +26,7 @@ import { ArrowRight, Check, X } from 'lucide-react';
 
 import { Boton } from '@/components/ui';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { useBloqueoScroll } from '@/hooks/useBloqueoScroll';
 
 /** Un paso del recorrido: a qué elemento apunta y qué explica. */
 export interface PasoTour {
@@ -42,7 +43,7 @@ export interface PasoTour {
  * ve y cómo filtrarlo, luego cómo actuar (reportar), y al final el resumen y la
  * forma de volver a ver la guía.
  */
-export const PASOS_TOUR: PasoTour[] = [
+const PASOS_TOUR: PasoTour[] = [
   {
     destino: null,
     titulo: '¡Te damos la bienvenida!',
@@ -135,6 +136,9 @@ export function Tour({ abierto, onCerrar, pasos = PASOS_TOUR }: TourProps) {
   const [altoTarjeta, setAltoTarjeta] = useState(220);
   const tarjetaRef = useRef<HTMLDivElement>(null);
   const sinMovimiento = usePrefersReducedMotion();
+
+  // Bloquea el scroll del fondo mientras el recorrido está abierto.
+  useBloqueoScroll(abierto);
 
   const paso = pasos[indice];
   const esUltimo = indice === pasos.length - 1;

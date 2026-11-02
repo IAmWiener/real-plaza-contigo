@@ -19,6 +19,7 @@ import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { useBloqueoScroll } from '@/hooks/useBloqueoScroll';
 import { Boton } from '@/components/ui/Boton';
 
 export interface DrawerProps {
@@ -48,6 +49,9 @@ export function Drawer({
   const reducido = usePrefersReducedMotion();
   const tituloId = useId();
   const botonCerrarRef = useRef<HTMLButtonElement>(null);
+
+  // Bloquea el scroll del fondo mientras el panel está abierto.
+  useBloqueoScroll(abierto);
 
   // Cierra con Escape y mueve el foco al botón de cierre al abrir.
   useEffect(() => {
@@ -128,7 +132,9 @@ export function Drawer({
               </Boton>
             </header>
 
-            <div className="flex-1 overflow-y-auto px-4 py-4">{children}</div>
+            <div className="scroll-sutil flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+              {children}
+            </div>
           </motion.div>
         </div>
       )}

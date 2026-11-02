@@ -1,7 +1,9 @@
 # Funcionalidades — Real Plaza Contigo
 
 > **Estado:** el **frontend está completo** (implementado, compila y
-> desplegado). El **backend/AWS (API + PostGIS)** sigue pendiente.
+> desplegado) y el **backend está implementado** (API REST + Prisma +
+> PostgreSQL/PostGIS, compila sin errores). El **despliegue del backend en AWS**
+> sigue pendiente.
 >
 > ⚠️ Todos los datos son ficticios y de demostración.
 >
@@ -76,7 +78,8 @@
 | Foco visible, etiquetas accesibles, teclado | ✅ | Componentes `ui/*` + `index.css`. |
 | Estados por texto + icono (no solo color) | ✅ | `Badge`, severidad/estado operativo. |
 | `prefers-reduced-motion` | ✅ | `usePrefersReducedMotion` + `index.css`. |
-| Responsive móvil (drawer/bottom sheet, safe-area) | ✅ | Capas con z-index coherente (mapa `z-0`, overlays `z-[600]`, drawer `z-[2000]`); panel de filtros `max-h-[40vh]` + safe-area y flujo de reporte con scroll. |
+| Responsive móvil (drawer/bottom sheet, safe-area) | ✅ | Capas con z-index coherente (mapa `z-0`, overlays `z-[600]`, drawer `z-[2000]`); panel de filtros con `max-h` + safe-area y flujo de reporte con scroll. |
+| Robustez de scroll | ✅ | `html/body` con `overflow: hidden` + `overscroll-behavior: none` (sin scroll fantasma en móvil); `overscroll-contain` en los contenedores deslizables sobre el mapa (listas, fichas, reporte, resumen, administración); bloqueo del scroll de fondo con overlays abiertos (`useBloqueoScroll` en `Drawer`, `Dialogo` y `Tour`). |
 
 ## Despliegue
 
@@ -84,10 +87,30 @@
 |---------------|--------|------|
 | Frontend en S3 + CloudFront (HTTPS, OAC) | ✅ | Build estático publicado; ver `guia-ejecucion.md`. |
 
-## Backend / AWS
+## Backend (API REST)
 
 | Funcionalidad | Estado | Nota |
 |---------------|--------|------|
-| API REST (CRUD + geoespacial) | ⏳ | — |
-| PostgreSQL + PostGIS | ⏳ | — |
-| Despliegue API (Lambda + API Gateway, RDS) con CDK | ⏳ | — |
+| Servidor Express (`crearApp`) con CORS y manejo central de errores | ✅ | `src/app.ts`, `middlewares/errorHandler.ts` (formato de error uniforme). |
+| Acceso a datos con Prisma sobre PostgreSQL + PostGIS | ✅ | `prisma/schema.prisma` con extensión `postgis`. |
+| Validación de entrada por endpoint (zod) | ✅ | `*.schema.ts` + `middlewares/validate.ts`. |
+| Logging de peticiones | ✅ | `middlewares/logger.ts`. |
+| Migración inicial y seeds ficticios | ✅ | `prisma/migrations/0001_init`, `prisma/seed.ts`. |
+| Adaptador para AWS Lambda | ✅ | `src/lambda.ts` con `@codegenie/serverless-express`. |
+
+### Endpoints
+
+| Recurso | Operaciones |
+|---------|-------------|
+| `GET /health` | Estado del servicio (demo). |
+| `/empresas`, `/categorias`, `/eventos`, `/recursos` | Listado/consulta de catálogos. |
+| `/puntos-acopio` | `GET` (listado o `?lat&lng&radio` por cercanía con PostGIS), `GET /:id`, `POST`, `PUT /:id`, `DELETE /:id`. |
+| `/puntos-riesgo` | `GET`, `GET /:id`, `POST`, `PUT /:id`, `POST /:id/resolver`, `DELETE /:id`. |
+
+## Despliegue del backend / AWS
+
+| Funcionalidad | Estado | Nota |
+|---------------|--------|------|
+| Despliegue API (Lambda + API Gateway) | ⏳ | Código listo (adaptador serverless); falta aprovisionar. |
+| Amazon RDS for PostgreSQL + PostGIS | ⏳ | — |
+| Infraestructura como código (AWS CDK) | ⏳ | — |

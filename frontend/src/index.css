@@ -29,6 +29,18 @@ html,
 body {
   margin: 0;
   padding: 0;
+  /*
+   * El layout principal es de altura fija (mapa a pantalla completa con paneles
+   * flotantes); el scroll real vive en los contenedores internos. Evitamos el
+   * scroll del documento para que en móvil la barra de URL o el "rubber band"
+   * no descoloquen el mapa ni los paneles fijos.
+   */
+  overflow: hidden;
+  /*
+   * Impide el encadenamiento del scroll hacia el documento (rubber banding) en
+   * iOS/Android cuando un panel interno llega a su tope.
+   */
+  overscroll-behavior: none;
 }
 
 body {
@@ -41,6 +53,16 @@ body {
    */
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/*
+ * Clase utilitaria para cuando se bloquea el scroll de fondo (p. ej. al abrir
+ * un Drawer/ficha). Es redundante con el `overflow: hidden` base, pero la
+ * conservamos explícita por si en el futuro el body permitiera scroll: el hook
+ * `useBloqueoScroll` la activa/desactiva de forma controlada.
+ */
+body.scroll-bloqueado {
+  overflow: hidden;
 }
 
 /* ------------------------------------------------------------------ */

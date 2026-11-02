@@ -1,0 +1,23 @@
+{
+  "name": "real-plaza-contigo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Real Plaza Contigo — monorepo (frontend web + backend API REST con PostgreSQL/PostGIS). Datos ficticios de demostración.",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev:backend": "npm run dev --workspace backend",
+    "build:frontend": "npm run build --workspace frontend",
+    "build:backend": "npm run build --workspace backend",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "db:migrate": "npm run db:migrate --workspace backend",
+    "db:seed": "npm run db:seed --workspace backend"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

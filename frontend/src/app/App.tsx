@@ -308,7 +308,7 @@ export function App() {
       <main className="relative flex-1 overflow-hidden">
         {vista === 'resumen' ? (
           /* Vista de resumen: dashboard combinado con scroll propio. */
-          <div className="scroll-sutil absolute inset-0 overflow-y-auto">
+          <div className="scroll-sutil absolute inset-0 overflow-y-auto overscroll-contain">
             <PanelResumen acopio={acopioVistas} riesgo={puntosRiesgo} />
             {/* Banda morada de cierre con el isotipo y wordmark de Real Plaza. */}
             <BandaMarca />
@@ -403,7 +403,7 @@ export function App() {
               {modo === 'riesgo' && (
                 <div
                   className={[
-                    'scroll-sutil pointer-events-auto absolute overflow-y-auto',
+                    'scroll-sutil pointer-events-auto absolute overflow-y-auto overscroll-contain',
                     // Móvil inactivo: barra compacta ARRIBA (no choca con los
                     // filtros de abajo). Móvil activo: hoja INFERIOR con el
                     // formulario, filtros ocultos, mapa visible arriba.
@@ -428,7 +428,7 @@ export function App() {
         ) : (
           /* Vista de administración: ancho completo con scroll propio y padding
              lateral cómodo en móvil (coherente con la vista de resumen). */
-          <div className="scroll-sutil absolute inset-0 overflow-y-auto px-3 py-4 sm:px-4">
+          <div className="scroll-sutil absolute inset-0 overflow-y-auto overscroll-contain px-3 py-4 sm:px-4">
             <PanelAdministracion
               modo={modo}
               acopioVistas={acopioVistas}

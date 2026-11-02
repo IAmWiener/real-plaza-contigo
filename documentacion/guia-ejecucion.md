@@ -1,13 +1,14 @@
 # Guía de ejecución — Real Plaza Contigo
 
 > **Estado:** el **frontend** está implementado, compila y está **desplegado**.
-> El **backend** aún no está inicializado (pendiente). Todos los datos son
-> ficticios y de demostración.
+> El **backend** está implementado y compila; su despliegue en AWS queda
+> pendiente. Todos los datos son ficticios y de demostración.
 
 ## Requisitos
 
 - Node.js 20+ (probado con Node 24).
 - npm 10+.
+- Para ejecutar el backend: **PostgreSQL con la extensión PostGIS**.
 
 ## Instalación
 
@@ -18,7 +19,12 @@ npm install
 ```
 
 El proyecto usa **npm workspaces**, por lo que esto instala las dependencias de
-`frontend/` (y de `backend/` cuando exista).
+`frontend/` y `backend/`.
+
+> **Nota (Node 24 / scripts de instalación):** las versiones recientes de npm
+> bloquean por defecto los *lifecycle scripts*, por lo que el `postinstall` de
+> Prisma puede no ejecutarse. Si el cliente de Prisma no queda generado, córrelo
+> manualmente: `npm run prisma:generate --workspace backend`.
 
 ## Frontend
 
@@ -72,8 +78,54 @@ aws cloudfront create-invalidation --distribution-id <dist-id> --paths "/*"
 
 ## Backend
 
-⏳ **Pendiente.** Se documentarán los comandos de desarrollo, migraciones, seeds
-y empaquetado para AWS Lambda cuando el proyecto `backend/` esté inicializado.
+### Variables de entorno (backend)
+
+Copia `backend/.env.example` a `backend/.env`:
+
+| Variable | Descripción |
+|----------|-------------|
+| `DATABASE_URL` | Cadena de conexión a PostgreSQL (la base debe tener PostGIS). |
+| `PORT` | Puerto del servidor HTTP local (por defecto `4000`). |
+| `CORS_ORIGIN` | Origen(es) permitidos por CORS (incluir el del frontend, p. ej. `http://localhost:5173`). |
+| `NODE_ENV` | Entorno de ejecución (`development` / `production`). |
+
+### Puesta en marcha (local)
+
+Requiere una base PostgreSQL con PostGIS accesible mediante `DATABASE_URL`.
+
+```bash
+# 1. Generar el cliente de Prisma (si el postinstall no corrió)
+npm run prisma:generate --workspace backend
+
+# 2. Aplicar migraciones (crea tablas y habilita PostGIS)
+npm run db:migrate --workspace backend      # o: npm run db:migrate (raíz)
+
+# 3. Sembrar datos ficticios de demostración
+npm run db:seed --workspace backend         # o: npm run db:seed (raíz)
+
+# 4. Arrancar la API en desarrollo (http://localhost:4000)
+npm run dev:backend                          # desde la raíz
+```
+
+### Scripts del backend (dentro de `backend/`)
+
+| Comando | Acción |
+|---------|--------|
+| `npm run dev` | Servidor Express con recarga (`tsx watch`). |
+| `npm run build` | Compila TypeScript a `backend/dist`. |
+| `npm start` | Ejecuta el build (`node dist/server.js`). |
+| `npm run typecheck` | Comprobación de tipos (`tsc --noEmit`). |
+| `npm run lint` | Lint del backend (ESLint). |
+| `npm run prisma:generate` | Genera el cliente de Prisma. |
+| `npm run db:migrate` | Aplica migraciones en desarrollo. |
+| `npm run db:deploy` | Aplica migraciones en producción. |
+| `npm run db:seed` | Carga los seeds de demostración. |
+
+### Conectar el frontend con la API
+
+Define `VITE_API_BASE_URL` en `frontend/.env` apuntando a la API (p. ej.
+`http://localhost:4000`). Sin esa variable, el frontend opera en modo demo con
+mocks y `localStorage`.
 
 ## Despliegue objetivo en AWS (según steering)
 

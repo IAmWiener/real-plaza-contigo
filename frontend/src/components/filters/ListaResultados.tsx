@@ -57,7 +57,7 @@ export function ListaResultados<T>({
     return (
       <div
         role="status"
-        className="flex flex-1 items-center justify-center overflow-y-auto p-4"
+        className="flex flex-1 items-center justify-center overflow-y-auto overscroll-contain p-4"
       >
         {vacio}
       </div>

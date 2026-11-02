@@ -15,6 +15,7 @@
 import { useEffect, useId, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { useBloqueoScroll } from '@/hooks/useBloqueoScroll';
 import { Boton } from '@/components/ui/Boton';
 
 export interface DialogoProps {
@@ -54,6 +55,9 @@ export function Dialogo({
   const tituloId = useId();
   const mensajeId = useId();
   const botonConfirmarRef = useRef<HTMLButtonElement>(null);
+
+  // Bloquea el scroll del fondo mientras el diálogo está abierto.
+  useBloqueoScroll(abierto);
 
   // Cierra con Escape y enfoca el botón de confirmar al abrir.
   useEffect(() => {

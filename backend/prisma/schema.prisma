@@ -1,0 +1,150 @@
+// Esquema de datos de Real Plaza Contigo.
+//
+// Fuente de verdad del dominio: PostgreSQL con la extensión PostGIS habilitada.
+// Las ubicaciones se guardan como lat/lng (escalares, para serialización simple
+// y coherencia con el contrato del frontend) y, además, en una columna PostGIS
+// `geom geography(Point,4326)` que mantienen las migraciones/servicios para
+// permitir consultas geoespaciales (cercanía por radio / bounding box).
+//
+// IMPORTANTE: todos los datos son ficticios y de demostración.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis]
+}
+
+/// Empresa / sede (centro comercial de Real Plaza) o aliado participante.
+model Empresa {
+  id       String  @id
+  nombre   String
+  tipo     String // 'sede' | 'aliado'
+  ruc      String
+  distrito String
+  telefono String
+
+  // Relaciones
+  sedeDe   PuntoAcopio[] @relation("SedeResponsable")
+  aliadoEn AliadoPunto[]
+
+  @@map("empresas")
+}
+
+/// Categoría de recursos atendidos por un punto de acopio.
+model Categoria {
+  id          String @id
+  nombre      String
+  icono       String
+  descripcion String
+
+  puntos CategoriaPunto[]
+
+  @@map("categorias")
+}
+
+/// Evento o desastre natural (ficticio).
+model Evento {
+  id           String   @id
+  nombre       String
+  tipo         String // inundacion | sismo | deslizamiento | lluvias_intensas
+  descripcion  String
+  fechaInicio  DateTime @map("fecha_inicio")
+  estado       String // activo | monitoreo | cerrado
+  zonaAfectada String   @map("zona_afectada")
+
+  puntos PuntoAcopio[]
+
+  @@map("eventos")
+}
+
+/// Centro / punto de acopio.
+model PuntoAcopio {
+  id               String   @id
+  codigo           String
+  nombre           String
+  estado           String // operativo | capacidad_limitada | saturado | cerrado
+  sedeId           String   @map("sede_id")
+  eventoId         String?  @map("evento_id")
+  direccion        String
+  distrito         String
+  lat              Float
+  lng              Float
+  horario          String
+  contactoNombre   String   @map("contacto_nombre")
+  contactoTelefono String   @map("contacto_telefono")
+  capacidad        Int
+  ocupacion        Int
+  actualizadoEn    DateTime @map("actualizado_en")
+  observaciones    String
+
+  sede       Empresa          @relation("SedeResponsable", fields: [sedeId], references: [id])
+  evento     Evento?          @relation(fields: [eventoId], references: [id])
+  categorias CategoriaPunto[]
+  aliados    AliadoPunto[]
+  recursos   Recurso[]
+
+  @@index([sedeId])
+  @@index([eventoId])
+  @@map("puntos_acopio")
+}
+
+/// Recurso disponible en un punto de acopio.
+model Recurso {
+  id                  String @id
+  puntoAcopioId       String @map("punto_acopio_id")
+  nombre              String
+  unidad              String
+  cantidadDisponible  Int    @map("cantidad_disponible")
+  cantidadComprometida Int   @map("cantidad_comprometida")
+  estado              String // disponible | bajo | agotado
+
+  puntoAcopio PuntoAcopio @relation(fields: [puntoAcopioId], references: [id], onDelete: Cascade)
+
+  @@index([puntoAcopioId])
+  @@map("recursos")
+}
+
+/// Punto / zona de riesgo reportado por un usuario (reporte ciudadano ficticio).
+model PuntoRiesgo {
+  id          String   @id
+  tipo        String // inundacion | derrumbe | incendio | sismo | via_bloqueada | otro
+  severidad   String // bajo | medio | alto | critico
+  descripcion String
+  lat         Float
+  lng         Float
+  radioMetros Int      @map("radio_metros")
+  distrito    String
+  estado      String // activo | en_verificacion | resuelto
+  reportadoEn DateTime @map("reportado_en")
+
+  @@map("puntos_riesgo")
+}
+
+/// Tabla puente: categorías atendidas por cada punto de acopio.
+model CategoriaPunto {
+  puntoAcopioId String @map("punto_acopio_id")
+  categoriaId   String @map("categoria_id")
+
+  puntoAcopio PuntoAcopio @relation(fields: [puntoAcopioId], references: [id], onDelete: Cascade)
+  categoria   Categoria   @relation(fields: [categoriaId], references: [id], onDelete: Cascade)
+
+  @@id([puntoAcopioId, categoriaId])
+  @@map("categorias_puntos")
+}
+
+/// Tabla puente: aliados participantes por punto de acopio.
+model AliadoPunto {
+  puntoAcopioId String @map("punto_acopio_id")
+  empresaId     String @map("empresa_id")
+
+  puntoAcopio PuntoAcopio @relation(fields: [puntoAcopioId], references: [id], onDelete: Cascade)
+  empresa     Empresa     @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+
+  @@id([puntoAcopioId, empresaId])
+  @@map("aliados_puntos")
+}
