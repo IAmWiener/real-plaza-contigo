@@ -8,10 +8,17 @@
 [build]
   # Construye SOLO el frontend desde su carpeta, evitando instalar el backend
   # (cuyo postinstall de Prisma no es necesario para publicar el sitio).
-  #   - `npm install --include=dev` asegura las devDependencies (vite,
+  #
+  # Se borra `package-lock.json` y `node_modules` antes de instalar para sortear
+  # un bug conocido de npm con las dependencias OPCIONALES nativas de Rollup
+  # (https://github.com/npm/cli/issues/4828): el lockfile se generó en Windows y
+  # no incluye el binario nativo de Linux (`@rollup/rollup-linux-x64-gnu`) que
+  # Vite necesita en Netlify. Reinstalar sin lock fuerza a npm a resolver el
+  # binario correcto para la plataforma del build (Linux).
+  #   - `npm install --include=dev` asegura además las devDependencies (vite,
   #     typescript, tailwind…) aunque Netlify fije NODE_ENV=production.
   base = "frontend"
-  command = "npm install --include=dev && npm run build"
+  command = "rm -rf package-lock.json node_modules && npm install --include=dev && npm run build"
   # Carpeta de salida del build de Vite, relativa a `base`.
   publish = "dist"
 
