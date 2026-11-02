@@ -83,17 +83,21 @@ El repositorio incluye `netlify.toml` para publicar el frontend en Netlify:
 | Clave | Valor | Motivo |
 |-------|-------|--------|
 | `base` | `frontend` | El sitio vive en la subcarpeta `frontend/` del monorepo. |
-| `command` | `npm install --include=dev && npm run build` | `--include=dev` fuerza instalar las devDependencies (vite, typescript, tailwind), necesarias para el build aunque Netlify use `NODE_ENV=production`. |
+| `command` | `rm -rf package-lock.json node_modules && npm install --include=dev && npm run build` | Reinstala sin lockfile para resolver el binario nativo de Rollup de Linux; `--include=dev` asegura las devDependencies (vite, typescript, tailwind). |
 | `publish` | `dist` | Salida del build de Vite, relativa a `base`. |
 | `NODE_VERSION` | `20` | Node LTS compatible con Vite 5. |
 
 Incluye una redirección SPA (`/*` → `/index.html`, 200) para que el enrutado del
 cliente no devuelva 404 al recargar.
 
-> **Nota de monorepo:** al existir un `package.json` raíz con workspaces, el
-> build debe instalar las devDependencies explícitamente; por eso el `command`
-> usa `--include=dev`. El `backend/` no se instala en este flujo (no es
-> necesario para publicar el sitio estático).
+> **Nota (binario nativo de Rollup):** el `package-lock.json` del frontend se
+> genera en Windows y no incluye el binario de Linux
+> `@rollup/rollup-linux-x64-gnu` que Vite necesita en Netlify. Por un
+> [bug conocido de npm](https://github.com/npm/cli/issues/4828) con las
+> dependencias opcionales, instalar desde ese lock en Linux omite el binario y
+> el build falla. Por eso el `command` borra `package-lock.json` y
+> `node_modules` antes de instalar, forzando a npm a resolver el binario de la
+> plataforma del build. El `backend/` no se instala en este flujo.
 
 ## Backend
 
