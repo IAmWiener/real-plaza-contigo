@@ -5,9 +5,6 @@
  *
  * - Logotipo tipográfico "Real Plaza Contigo" (marca Real Plaza) y el lema
  *   "Una red de apoyo para nuestras comunidades" (Req. 11.1, 15.1).
- * - Indicador_DEMO: un `Badge` neutro con icono + texto "DEMO" SIEMPRE visible,
- *   para dejar claro que todos los datos son ficticios y de demostración; la
- *   información no depende solo del color (Req. 11.2, 15.2).
  * - `SelectorModo` para alternar entre Modo_Acopio y Modo_Riesgo (Req. 11.3).
  * - Control Mapa / Administración: par de botones que alternan la vista activa
  *   indicando con etiqueta + icono cuál está seleccionada (Req. 11.3, 10.1).
@@ -26,7 +23,6 @@
 
 import {
   BarChart3,
-  FlaskConical,
   HelpCircle,
   LayoutDashboard,
   LocateFixed,
@@ -35,7 +31,7 @@ import {
 
 import type { ModoApp } from '@/types/domain';
 import type { Vista } from '@/types/ui';
-import { Badge, Boton } from '@/components/ui';
+import { Boton } from '@/components/ui';
 import { SelectorModo } from '@/components/layout/SelectorModo';
 import { Logo } from '@/components/layout/Logo';
 
@@ -82,21 +78,10 @@ export function Header({
             titulo="Real Plaza"
           />
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="cr-display truncate text-lg leading-none text-white sm:text-2xl">
-                Mapa de Solidaridad Real
-              </span>
-              {/* Indicador de entorno de demostración; se oculta en pantallas
-                  muy estrechas para no competir por el ancho. */}
-              <Badge
-                tono="neutro"
-                icono={<FlaskConical className="h-3.5 w-3.5" aria-hidden="true" />}
-                className="hidden bg-white/15 text-white sm:inline-flex"
-              >
-                DEMO
-              </Badge>
-            </div>
-            <p className="hidden truncate text-xs text-white/80 sm:block">
+            <span className="cr-display block text-base leading-tight text-white sm:text-2xl">
+              Mapa de Solidaridad Real
+            </span>
+            <p className="hidden text-xs text-white/80 sm:block">
               Una red de apoyo para nuestras comunidades
             </p>
           </div>
