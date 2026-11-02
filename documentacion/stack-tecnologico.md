@@ -61,6 +61,13 @@ Aplicación **React + TypeScript + Vite**, estilos con **Tailwind CSS**, mapa co
 > Cartografía: **OpenStreetMap** como proveedor de tiles, sin API key. Se debe
 > incluir su atribución en el mapa.
 
+> **Overrides de dependencias (`package.json`):**
+> - `tslib: 2.8.1` — fija una versión real de `tslib` (dependencia transitiva de
+>   framer-motion); evita que el lockfile resuelva una versión inexistente
+>   (`2.9.1`) que hacía fallar `npm install` en el build.
+> - `@rollup/rollup-linux-x64-gnu: 4.67.3` como `optionalDependencies` — binario
+>   nativo de Rollup para Linux, necesario en el build de Netlify.
+
 ## Backend (`backend/package.json`)
 
 API REST **Node.js + TypeScript** con **Express**, acceso a datos con **Prisma**
