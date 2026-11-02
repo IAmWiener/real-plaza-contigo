@@ -161,7 +161,8 @@ Todas las áreas táctiles son ≥ 44px.
 
 ### Header / banda de marca (`src/components/layout/Header.tsx`)
 
-Banda **morado 800** con texto blanco, isotipo turquesa, wordmark en
+Banda **morado 800** con texto blanco, isotipo del león (imagen real
+`public/favicon-layo.png`, vía el componente `Logo`), wordmark en
 `.cr-display`, indicador **DEMO** y controles. Sticky, con `safe-top` para el
 notch.
 
