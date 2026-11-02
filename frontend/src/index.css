@@ -1,0 +1,187 @@
+/*
+ * Estilos globales de Real Plaza Contigo (frontend).
+ *
+ * IMPORTANTE: las reglas @import deben ir al inicio del archivo, antes de las
+ * directivas @tailwind. Por eso el CSS de Leaflet se importa primero.
+ */
+@import 'leaflet/dist/leaflet.css';
+
+/* Directivas de Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Estilos base                                                        */
+/* ------------------------------------------------------------------ */
+
+/*
+ * La app ocupa toda la altura disponible para que el mapa pueda llenar el
+ * viewport. Tipografía sans (token de Tailwind) y color de texto "ink".
+ */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply bg-surface-subtle font-sans text-ink antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /*
+   * Áreas seguras de dispositivos móviles (notch, home indicator). Se aplica
+   * también a nivel de body para respetar el viewport-fit=cover del index.html.
+   */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* ------------------------------------------------------------------ */
+/* Scrollbars discretas                                                */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Barras de desplazamiento sutiles para los paneles con scroll propio, sin
+ * ocupar espacio visual dominante. En móvil el scroll suele ser por gesto.
+ */
+.scroll-sutil {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+}
+
+.scroll-sutil::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scroll-sutil::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.35);
+  border-radius: 9999px;
+}
+
+.scroll-sutil::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Asidero (grabber) para hojas inferiores en móvil                    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Pequeña barra centrada que indica que un panel es deslizable/arrastrable,
+ * patrón habitual de las "bottom sheets" en móvil.
+ */
+.grabber {
+  width: 2.5rem;
+  height: 0.3rem;
+  border-radius: 9999px;
+  background-color: rgba(148, 163, 184, 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/* Foco visible por defecto                                            */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Anillo de foco razonable para navegación por teclado. Solo se muestra cuando
+ * el foco proviene del teclado (:focus-visible), evitando anillos en clics.
+ * El sistema de diseño usa el turquesa como color de foco (--cr-foco).
+ */
+:focus-visible {
+  /* Turquesa 500 del sistema de diseño (--cr-foco). */
+  outline: 3px solid #2fc4d2;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tipografía display del sistema "Comunidad Real"                     */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Titulares en mayúsculas con fuente display condensada (Anton) y palabra
+ * protagonista con la display extendida (Archivo Black). Interlineado 0.95 en
+ * display, según el manual. El cuerpo usa la base (Outfit) vía `font-sans`.
+ */
+.cr-display {
+  font-family: 'Anton', 'Bebas Neue', 'Oswald', Impact, sans-serif;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+}
+
+.cr-impacto {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilidades de áreas seguras                                         */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Clases auxiliares para que paneles flotantes (header, bottom sheets,
+ * controles) respeten las áreas seguras del dispositivo.
+ */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+/* ------------------------------------------------------------------ */
+/* Marcadores de Leaflet basados en divIcon                            */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Los divIcon de Leaflet traen por defecto un fondo blanco y borde. Los
+ * marcadores personalizados (acopio y riesgo) usan HTML propio, así que
+ * neutralizamos fondo y borde para que se vean limpios.
+ */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+.rpc-marcador-riesgo,
+.marcador-acopio {
+  background: transparent;
+  border: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Movimiento reducido (prefers-reduced-motion)                        */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Respeta la preferencia del usuario de reducir el movimiento: anula/limita
+ * animaciones y transiciones globalmente.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

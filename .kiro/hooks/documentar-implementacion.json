@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Documentar implementación del proyecto",
+      "trigger": "Stop",
+      "description": "Al terminar una sesión de trabajo del agente, actualiza la documentación de la implementación del proyecto Real Plaza Contigo dentro de la carpeta documentacion/.",
+      "action": {
+        "type": "agent",
+        "prompt": "Se acaba de guardar un archivo relevante del proyecto \"Real Plaza Contigo\" (demo frontend de puntos de acopio ante emergencias).\n\nTu tarea es mantener actualizada la documentación de la implementación dentro de la carpeta `documentacion/` en la raíz del workspace. Crea la carpeta si no existe.\n\nMantén y actualiza los siguientes documentos en Markdown (crea solo los que apliquen según el estado actual del código; no inventes contenido que no exista en el código):\n\n1. `documentacion/README.md` — Índice de la documentación y visión general del proyecto: propósito de la demo, aclaración de que todos los datos son ficticios/demostración, y enlaces al resto de documentos.\n2. `documentacion/arquitectura.md` — Estructura de carpetas real (src/app, components, data/mock, hooks, services, types, utils), descripción de cada módulo y cómo se relacionan.\n3. `documentacion/stack-tecnologico.md` — Tecnologías y dependencias usadas (React, TypeScript, Vite, Tailwind, Leaflet/React Leaflet, OpenStreetMap, Lucide, Framer Motion, clustering) con sus versiones reales desde package.json.\n4. `documentacion/modelo-de-datos.md` — Tipos TypeScript y entidades mockeadas (empresas/sedes, categorías, eventos, puntos de acopio, recursos) y sus relaciones por ID.\n5. `documentacion/funcionalidades.md` — Vistas y features implementadas (mapa interactivo, filtros/búsqueda, ficha de detalle, panel de administración, persistencia en localStorage) con su estado de avance.\n6. `documentacion/guia-ejecucion.md` — Comandos para instalar, ejecutar en desarrollo y hacer build de la demo.\n\nReglas:\n- Basa TODO el contenido en el código real del workspace. Inspecciona los archivos antes de escribir. No documentes lo que aún no está implementado; en su lugar márcalo como \"pendiente\" si es parte del alcance.\n- Sé conciso y claro. Usa tablas cuando ayude (por ejemplo para dependencias o entidades).\n- Escribe en español.\n- Deja claro que los datos (sedes, RUC, coordenadas, eventos, capacidades, contactos) son ficticios y solo para demostración.\n- Actualiza los documentos existentes en lugar de duplicarlos. No sobrescribas secciones correctas con información vacía.\n- Si el proyecto aún no tiene código fuente, crea al menos `documentacion/README.md` indicando que la implementación está en progreso."
+      }
+    }
+  ]
+}

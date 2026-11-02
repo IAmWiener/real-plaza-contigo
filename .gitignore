@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+
+# Builds
+dist/
+build/
+*.tsbuildinfo
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / SO
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# AWS / IaC
+cdk.out/
+.aws-sam/

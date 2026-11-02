@@ -1,0 +1,604 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Agregar dependencias de desarrollo e instalar": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378263204
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378400499
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378518231
+      }
+    ],
+    "1.2 Configurar Vitest (jsdom) y setup de pruebas": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378268014
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378525252
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378700118
+      }
+    ],
+    "1.3 Manejar `VITE_API_BASE_URL` y modo demo por entorno": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378271639
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378526506
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378701438
+      }
+    ],
+    "2.1 Crear `types/ui.ts` con view-models y modelos de filtrado": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378275533
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378708235
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378778066
+      }
+    ],
+    "2.2 Implementar derivación de view-models por ID en `utils/geo.ts` y helper de datos": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378277921
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378783759
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378880879
+      }
+    ],
+    "3.1 Definir la interfaz `DataService` y `DatosDominio`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378280507
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378785110
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378882263
+      }
+    ],
+    "3.2 Implementar `MockDataService` con mocks + `storage.ts`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378283684
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378889591
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379020994
+      }
+    ],
+    "3.3 Implementar `ApiDataService` con fallback a mock": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378286323
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378890932
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379022341
+      }
+    ],
+    "3.4 Implementar la fábrica `crearDataService()`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378290629
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379036581
+      },
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379098969
+      }
+    ],
+    "4. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378295310
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379196287
+      }
+    ],
+    "5.1 Implementar núcleo de filtrado reutilizable y hooks de filtros": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378299358
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379205715
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379340611
+      }
+    ],
+    "5.4 Implementar `useGeolocalizacion`, `useToasts` y `usePrefersReducedMotion`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378303600
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379207181
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379343425
+      }
+    ],
+    "6.1 Crear `app/rutas.ts` y el reducer de estado": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378308249
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379208546
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379345760
+      }
+    ],
+    "6.2 Implementar `app/AppProvider.tsx` con acciones y carga inicial": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378312202
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379354236
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379581718
+      }
+    ],
+    "7.1 Crear `Boton`, `Campo`, `Badge`, `Drawer`/`BottomSheet`, `Dialogo`, `Toasts`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378315810
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379355689
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379580407
+      }
+    ],
+    "8.1 Implementar `MapaBase` con OSM, estados de carga/error y control de inicio": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378320596
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379594094
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379695178
+      }
+    ],
+    "8.2 Implementar `ControlUbicacion` y `AjusteEncuadre`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378324201
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379700573
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379995703
+      }
+    ],
+    "8.3 Implementar `MarcadoresAcopio` (icono por categoría + forma por estado, clustering, popup)": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378328250
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379701982
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380000552
+      }
+    ],
+    "8.4 Implementar `ZonasRiesgo` (Circle por radio + marcador central diferenciado)": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378331634
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379703283
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379998284
+      }
+    ],
+    "9.1 Implementar `SelectorModo`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378335502
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380008146
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380108554
+      }
+    ],
+    "9.2 Implementar `Header` con marca, lema, Indicador_DEMO y controles": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378338812
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380115653
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380367597
+      }
+    ],
+    "10.1 Implementar `PanelFiltros`, `FiltrosAcopio`, `FiltrosRiesgo` y `ListaResultados`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378342820
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380117963
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380369397
+      }
+    ],
+    "11.1 Implementar `FichaDetalleAcopio` y `FichaEvento`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378345577
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380381592
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380570546
+      }
+    ],
+    "11.2 Implementar `FichaDetalleRiesgo`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378350303
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380384075
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380573180
+      }
+    ],
+    "12.1 Implementar `FlujoReporteRiesgo` y `PreviewRadio`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378353614
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380386096
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380575519
+      }
+    ],
+    "13.1 Implementar `PanelAdministracion` con tabla, búsqueda y filtros por modo": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378357936
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380781294
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380972168
+      }
+    ],
+    "13.2 Implementar `FormAcopio` y `FormRiesgo` con validación por campo": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378360513
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380585950
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380775568
+      }
+    ],
+    "14. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378363799
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380982945
+      }
+    ],
+    "15.1 Implementar estilos globales y `main.tsx`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378366738
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380984302
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381065656
+      }
+    ],
+    "15.2 Implementar `app/App.tsx` y cablear todas las acciones": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378370530
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381073958
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381334384
+      }
+    ],
+    "16.1 Ejecutar `npm run typecheck`, `npm run lint`, `npm test` y `npm run build`": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378388140
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381343324
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381580553
+      }
+    ],
+    "17. Checkpoint final — Ensure all tests pass": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378390741
+      },
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381582860
+      }
+    ],
+    "2. Definir tipos de UI y derivación de view-models": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793378883637
+      }
+    ],
+    "3. Implementar la Capa de Servicios (DataService + mock + api + fábrica)": [
+      {
+        "executionId": "d2a8c180-6182-48be-911f-c7169ec845d4",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379101671
+      }
+    ],
+    "7. Implementar componentes UI compartidos (`components/ui/`)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379584063
+      }
+    ],
+    "6. Implementar el estado global (AppProvider + reducer)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793379585619
+      }
+    ],
+    "9. Implementar Selector_Modo y Header (`components/layout/`)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380371190
+      }
+    ],
+    "10. Implementar Panel_Filtros para ambos modos (`components/filters/`)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380373012
+      }
+    ],
+    "12. Implementar el flujo de reporte de zona de riesgo (`components/risk/`)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380578121
+      }
+    ],
+    "13. Implementar el Panel de administración (`components/administration/`)": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793380975759
+      }
+    ],
+    "15. Componer la aplicación y hacer el wiring final": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381336942
+      }
+    ],
+    "16. Verificación final — build, typecheck y lint limpios": [
+      {
+        "executionId": "14ff6db0-643c-4c47-bfd9-12db74fc636d",
+        "chatSessionId": "sess_a8a69395-95ef-46dd-923f-4ab81626233b",
+        "timestamp": 1793381584280
+      }
+    ]
+  }
+}
