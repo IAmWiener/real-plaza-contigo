@@ -33,7 +33,7 @@ frontend/
 ├── postcss.config.js
 ├── eslint.config.js        # ESLint flat config (TS + React hooks/refresh)
 ├── .env / .env.example     # VITE_API_BASE_URL (modo API o demo)
-├── public/favicon-layo.svg # Favicon (león Layo, SVG vectorial)
+├── public/favicon-layo.png # Favicon (logo del león Layo)
 └── src/
     ├── main.tsx            # Punto de entrada: monta App dentro de AppProvider
     ├── index.css           # Tailwind, foco visible, safe-area, reduced-motion
