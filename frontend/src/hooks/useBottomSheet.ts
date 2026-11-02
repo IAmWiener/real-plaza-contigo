@@ -24,9 +24,9 @@ const ORDEN: PosicionSheet[] = ['min', 'medio', 'expandido'];
 
 /** Fracción del alto del viewport que ocupa cada posición. */
 const FRACCIONES: Record<PosicionSheet, number> = {
-  min: 0.18,
-  medio: 0.5,
-  expandido: 0.88,
+  min: 0.14,
+  medio: 0.55,
+  expandido: 0.92,
 };
 
 /** Desplazamiento mínimo (px) para considerar el gesto como arrastre y no toque. */
