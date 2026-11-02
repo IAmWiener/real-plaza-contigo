@@ -163,8 +163,7 @@ Todas las áreas táctiles son ≥ 44px.
 
 Banda **morado 800** con texto blanco, isotipo del león (imagen real
 `public/favicon-layo.png`, vía el componente `Logo`), wordmark en
-`.cr-display`, indicador **DEMO** y controles. Sticky, con `safe-top` para el
-notch.
+`.cr-display` y controles. Sticky, con `safe-top` para el notch.
 
 ### Selector de modo (`src/components/layout/SelectorModo.tsx`)
 

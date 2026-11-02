@@ -66,7 +66,7 @@ frontend/
 | Módulo | Rol |
 |--------|-----|
 | `app/` | Composición raíz (`App`), proveedor de estado (`AppProvider`) y reducer (`estado.ts`). Mantiene modo, vista, datos, selección, modo demo y toasts. |
-| `components/layout/` | Header con marca/lema/indicador DEMO y `SelectorModo` (Acopio/Riesgo); `Logo` muestra el isotipo del león desde `public/favicon-layo.png`. |
+| `components/layout/` | Header con marca/lema y `SelectorModo` (Acopio/Riesgo); `Logo` muestra el isotipo del león desde `public/favicon-layo.png`. |
 | `components/map/` | Mapa Leaflet + OSM, `MarcadoresAcopio`, `ZonasRiesgo`, controles de inicio/ubicación y `AjusteEncuadre`. |
 | `components/filters/` | Panel de búsqueda y filtros por modo + lista de resultados. |
 | `components/points/` · `events/` · `risk/` | Fichas de detalle de acopio, evento y riesgo; flujo de reporte de zona de riesgo. |

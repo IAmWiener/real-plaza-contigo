@@ -78,8 +78,8 @@ export function Header({
             titulo="Real Plaza"
           />
           <div className="min-w-0">
-            <span className="cr-display block text-base leading-tight text-white sm:text-2xl">
-              Mapa de Solidaridad Real
+            <span className="cr-display block whitespace-nowrap text-xl leading-none text-white sm:text-2xl">
+              Solidaridad Real
             </span>
             <p className="hidden text-xs text-white/80 sm:block">
               Una red de apoyo para nuestras comunidades
@@ -131,7 +131,8 @@ export function Header({
             </Boton>
           </div>
 
-          {/* Acceso a la ubicación actual del usuario. */}
+          {/* Acceso a la ubicación actual del usuario. Solo icono; oculto en
+              móvil para no saturar la barra en pantallas pequeñas. */}
           <Boton
             variante="inverso"
             tamano="sm"
@@ -139,20 +140,19 @@ export function Header({
             icono={<LocateFixed className="h-4 w-4" aria-hidden="true" />}
             onClick={onUbicacion}
             data-tour="ubicacion"
-          >
-            <span className="hidden sm:inline">Mi ubicación</span>
-          </Boton>
+            className="hidden sm:inline-flex"
+          />
 
-          {/* Acceso permanente a la guía de uso (relanza el onboarding). */}
+          {/* Acceso permanente a la guía de uso (relanza el onboarding). Solo
+              icono; oculto en móvil. */}
           <Boton
             variante="inverso"
             tamano="sm"
             aria-label="Ver guía: cómo funciona la aplicación"
             icono={<HelpCircle className="h-4 w-4" aria-hidden="true" />}
             onClick={onAyuda}
-          >
-            <span className="hidden sm:inline">¿Cómo funciona?</span>
-          </Boton>
+            className="hidden sm:inline-flex"
+          />
         </div>
 
         {/*
