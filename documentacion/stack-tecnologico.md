@@ -52,6 +52,12 @@ Aplicación **React + TypeScript + Vite**, estilos con **Tailwind CSS**, mapa co
 | fast-check | ^3.23.1 | Property-based testing |
 | @axe-core/react · jest-axe | ^4.10.0 · ^9.0.0 | Auditoría de accesibilidad |
 
+> **Build de producción independiente del tooling de pruebas:** `vite.config.ts`
+> importa `defineConfig` desde `vite` (no desde `vitest/config`) y el
+> `tsconfig.app.json` excluye `src/test`. Así `tsc -b && vite build` no depende
+> de `vitest` ni de `@testing-library/*`, evitando fallos en despliegues que
+> omiten devDependencies.
+
 > Cartografía: **OpenStreetMap** como proveedor de tiles, sin API key. Se debe
 > incluir su atribución en el mapa.
 
