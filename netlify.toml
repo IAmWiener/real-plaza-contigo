@@ -1,0 +1,24 @@
+# Configuración de despliegue en Netlify para "Mapa de Solidaridad Real".
+#
+# El proyecto vive en la subcarpeta `frontend/`, por eso se fija el directorio
+# base. Netlify ejecuta el build dentro de esa carpeta y publica su salida.
+
+[build]
+  # Carpeta donde está el proyecto (package.json, código fuente).
+  base = "frontend"
+  # Comando de construcción (type-check + build de Vite).
+  command = "npm run build"
+  # Carpeta de salida relativa a `base`; Netlify publica frontend/dist.
+  publish = "dist"
+
+[build.environment]
+  # Versión de Node para el build (Vite 5 requiere Node 18+).
+  NODE_VERSION = "20"
+
+# Redirección para Single Page Application: cualquier ruta se sirve con el
+# index.html para que el enrutado del lado cliente funcione y no dé 404 al
+# recargar o entrar directo a una URL interna.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
