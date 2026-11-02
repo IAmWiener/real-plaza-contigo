@@ -24,6 +24,9 @@
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.67.3"
   },
+  "overrides": {
+    "tslib": "2.8.1"
+  },
   "devDependencies": {
     "@axe-core/react": "^4.10.0",
     "@eslint/js": "^9.39.5",
