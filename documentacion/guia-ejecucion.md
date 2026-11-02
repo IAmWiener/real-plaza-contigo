@@ -76,6 +76,25 @@ aws cloudfront create-invalidation --distribution-id <dist-id> --paths "/*"
 > eligió porque el rol del entorno no permite desbloquear el *Block Public
 > Access* de S3.
 
+### Despliegue en Netlify (`netlify.toml`)
+
+El repositorio incluye `netlify.toml` para publicar el frontend en Netlify:
+
+| Clave | Valor | Motivo |
+|-------|-------|--------|
+| `base` | `frontend` | El sitio vive en la subcarpeta `frontend/` del monorepo. |
+| `command` | `npm install --include=dev && npm run build` | `--include=dev` fuerza instalar las devDependencies (vite, typescript, tailwind), necesarias para el build aunque Netlify use `NODE_ENV=production`. |
+| `publish` | `dist` | Salida del build de Vite, relativa a `base`. |
+| `NODE_VERSION` | `20` | Node LTS compatible con Vite 5. |
+
+Incluye una redirección SPA (`/*` → `/index.html`, 200) para que el enrutado del
+cliente no devuelva 404 al recargar.
+
+> **Nota de monorepo:** al existir un `package.json` raíz con workspaces, el
+> build debe instalar las devDependencies explícitamente; por eso el `command`
+> usa `--include=dev`. El `backend/` no se instala en este flujo (no es
+> necesario para publicar el sitio estático).
+
 ## Backend
 
 ### Variables de entorno (backend)

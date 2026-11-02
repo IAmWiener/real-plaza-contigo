@@ -1,18 +1,22 @@
 # Configuración de despliegue en Netlify para "Mapa de Solidaridad Real".
 #
-# El proyecto vive en la subcarpeta `frontend/`, por eso se fija el directorio
-# base. Netlify ejecuta el build dentro de esa carpeta y publica su salida.
+# El repositorio es un monorepo con npm workspaces (frontend, backend). Para que
+# la instalación sea coherente, Netlify construye DESDE LA RAÍZ (no se fija
+# `base = "frontend"`): instala las dependencias del workspace y luego compila
+# solo el frontend. La salida publicada es `frontend/dist`.
 
 [build]
-  # Carpeta donde está el proyecto (package.json, código fuente).
+  # Construye SOLO el frontend desde su carpeta, evitando instalar el backend
+  # (cuyo postinstall de Prisma no es necesario para publicar el sitio).
+  #   - `npm install --include=dev` asegura las devDependencies (vite,
+  #     typescript, tailwind…) aunque Netlify fije NODE_ENV=production.
   base = "frontend"
-  # Comando de construcción (type-check + build de Vite).
-  command = "npm run build"
-  # Carpeta de salida relativa a `base`; Netlify publica frontend/dist.
+  command = "npm install --include=dev && npm run build"
+  # Carpeta de salida del build de Vite, relativa a `base`.
   publish = "dist"
 
 [build.environment]
-  # Versión de Node para el build (Vite 5 requiere Node 18+).
+  # Versión de Node para el build (Vite 5 requiere Node 18+; usamos 20 LTS).
   NODE_VERSION = "20"
 
 # Redirección para Single Page Application: cualquier ruta se sirve con el
