@@ -45,6 +45,9 @@ export interface AppProviderProps {
   children: ReactNode;
 }
 
+/** Tiempo de vida de un toast antes de auto-descartarse (milisegundos). */
+const DURACION_TOAST_MS = 4000;
+
 /**
  * Genera un identificador para un toast. Usa `crypto.randomUUID` cuando está
  * disponible y recurre a un fallback basado en tiempo + aleatorio en entornos
@@ -92,16 +95,45 @@ export function AppProvider({ children }: AppProviderProps) {
 
   // --- Toasts ---------------------------------------------------------------
 
+  // Temporizadores de auto-eliminación por id de toast. Los toasts se guardan
+  // en el estado global (reducer), por lo que la auto-eliminación se programa
+  // aquí, en el proveedor, al mostrarlos.
+  const toastTimersRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(
+    new Map(),
+  );
+
+  const quitarToast = useCallback((id: string) => {
+    const timer = toastTimersRef.current.get(id);
+    if (timer !== undefined) {
+      clearTimeout(timer);
+      toastTimersRef.current.delete(id);
+    }
+    despachar({ tipo: 'TOAST_QUITAR', id });
+  }, []);
+
   const mostrarToast = useCallback(
     (tipo: Toast['tipo'], mensaje: string) => {
-      const toast: Toast = { id: generarIdToast(), tipo, mensaje };
+      const id = generarIdToast();
+      const toast: Toast = { id, tipo, mensaje };
       despachar({ tipo: 'TOAST_AGREGAR', toast });
+
+      // Programa el auto-descarte del toast tras unos segundos.
+      const timer = setTimeout(() => {
+        toastTimersRef.current.delete(id);
+        despachar({ tipo: 'TOAST_QUITAR', id });
+      }, DURACION_TOAST_MS);
+      toastTimersRef.current.set(id, timer);
     },
     [],
   );
 
-  const quitarToast = useCallback((id: string) => {
-    despachar({ tipo: 'TOAST_QUITAR', id });
+  // Limpia los temporizadores de toasts pendientes al desmontar el proveedor.
+  useEffect(() => {
+    const timers = toastTimersRef.current;
+    return () => {
+      timers.forEach((timer) => clearTimeout(timer));
+      timers.clear();
+    };
   }, []);
 
   // --- Carga inicial --------------------------------------------------------
